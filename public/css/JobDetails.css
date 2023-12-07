@@ -1,0 +1,61 @@
+/* Job Details Page */
+body{
+    background-color:darkcyan;
+}
+
+
+.container {
+    background-color:darkcyan;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.card-header {
+    background-color: #76a1ce;
+    color: #fff;
+}
+
+.card-body {
+    background-color: #0d657a;;
+}
+
+/* Modal */
+.modal-body {
+    background-color: #ffffff;
+}
+
+/* Apply Modal Form */
+.form-label {
+    font-weight: bold;
+}
+
+/* Apply Now Button */
+.btn-outline-success {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+/* Skills */
+.skills {
+    margin-top: 10px;
+}
+
+/* Customize as needed */
+/* Update (Pencil) Button */s
+a[href^="/update-job"] svg.bi-pencil-fill {
+    color: rgb(0, 0, 0);
+}
+
+/* Delete Button */
+a[data-bs-toggle="modal"] svg.bi-archive-fill {
+    color: red;
+}
+/* Apply Now Button */
+.btn-outline-success {
+    color: #1b1b1b;
+    border-color: #74a099;
+    background-color: rgb(17, 177, 177);
+    
+}

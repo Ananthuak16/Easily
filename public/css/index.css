@@ -1,0 +1,45 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: mediumaquamarine; /* Set a background color for the body */
+}
+
+.container {
+    text-align: center;
+    color: #343a40; /* Set text color */
+}
+
+/* Header Styles */
+h1 {
+    font-size: 2.5em; /* Adjust the font size as needed */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Paragraph Styles */
+p {
+    font-size: 1.2em; /* Adjust the font size as needed */
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff; /* Blue color for the Jobs button */
+    border-color: #007bff;
+}
+
+.btn-success {
+    background-color: #28a745; /* Green color for the Recruiters button */
+    border-color: #28a745;
+}
+
+/* Adjust button size and text color */
+.btn-lg {
+    font-size: 1.2em;
+    color: #ffffff; /* White text color for buttons */
+}
+
+/* Add hover effect to buttons */
+.btn-primary:hover, .btn-success:hover {
+    filter: brightness(90%); /* Adjust brightness on hover */
+}

@@ -1,0 +1,123 @@
+
+
+<link rel="stylesheet" href="/css/JobDetails.css">
+
+<!-- Job Details Page -->
+<div class="container p-3 mx-auto w-75 my-5 rounded-md">
+    <h2 style="color: #181642" class="text-center mb-3">Job Details</h2>
+
+    <div class="card border-white bg-theme">
+        <div class="card-header d-flex flex-column align-items-center justify-content-start p-2">
+            <h5 class="my-1 fw-bold text-warning"><%= job.companyName %></h5>
+            <div>
+                <span><%= job.category %></span>
+                <span class="text-info"><%= job.designation %></span>
+            </div>
+        </div>
+        <div class="card-body d-flex align-items-center justify-content-center flex-column">
+            <p class="fw-bold">
+                <i class="bi bi-geo-alt-fill"></i><%= job.location %>
+            </p>
+            <p class="fw-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
+                    <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4v1.06Z"></path>
+                </svg><%= job.salary %>
+            </p>
+            <p>
+                
+                <% if(locals.userEmail) {%>
+                
+                <a href="/update-job/<%= job.id %>">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                    </svg>
+                </a>
+
+                <!-- Delete Confirmation Modal Trigger -->
+                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
+                        <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1M.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
+                    </svg>
+                </a>
+                <% } %>
+            </p>
+
+            <!-- Delete Confirmation Modal -->
+            <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to delete this job?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a href="/delete-job/<%= job.id %>" class="btn btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue with the rest of the job details code -->
+            <!-- Continue with the rest of the job details code -->
+            <div class="skills p-1">
+                <% job.skillsRequired.forEach(skill => { %>
+                    <button class="btn btn-sm btn-outline-info"><%= skill %></button>
+                <% }) %>
+            </div>
+            <!-- Add "Apply Now" button with a link to trigger the modal -->
+            <button type="button" class="btn btn-sm btn-outline-success my-2" data-bs-toggle="modal" data-bs-target="#applyModal">
+                Apply Now
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Apply Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5>Apply for the Job</h5>
+                <p>Please fill in the following details to apply for the job:</p>
+
+                <form action="/submitApplication" method="post">
+
+                    <!-- Name -->
+                    <div class="mb-3">
+                        <label for="applicantName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="applicantName" name="applicantName" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="applicantEmail" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="applicantEmail" name="applicantEmail" required>
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="mb-3">
+                        <label for="applicantContact" class="form-label">Contact Number</label>
+                        <input type="tel" class="form-control" id="applicantContact" name="applicantContact" pattern="[0-9]{10}" required>
+                        <!-- Assuming a 10-digit phone number for simplicity -->
+                    </div>
+
+                    <!-- Resume -->
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Upload Resume</label>
+                        <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+                        <!-- Allowing only PDF, DOC, DOCX files -->
+                    </div>
+
+                    <!-- Add more fields as needed -->
+
+                    <button type="submit" class="btn btn-primary">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

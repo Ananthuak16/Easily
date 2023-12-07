@@ -1,0 +1,56 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #438dd7;; /* Set a background color for the body */
+    color: #343a40; /* Set default text color */
+}
+
+/* Container Styles */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+/* Form Styles */
+form {
+    min-width: 45vh;
+    max-width: 400px; /* Adjust the maximum width of the form as needed */
+    margin: auto; /* Center the form within the container */
+    padding: 20px;
+    background-color: #ffffff; /* White background color for the form */
+    border: 1px solid #ced4da; /* Border color */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift effect */
+}
+
+/* Input Styles */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: 1px solid #0056b3;
+    min-width: 90%;
+    display: block; /* Make the button a block-level element */
+    margin: auto; /* Center the button horizontally */
+}
+
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    /* Adjust styles for smaller screens if needed */
+    form {
+        width: 90%;
+    }
+}
