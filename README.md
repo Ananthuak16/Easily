@@ -29,3 +29,5 @@ Easily is a job portal website developed using Express.js, EJS, and follows the 
    ```bash
    git clone https://github.com/your-username/easily-job-portal.git
    cd easily-job-portal
+### hosted link
+https://easily-fpan.onrender.com/
